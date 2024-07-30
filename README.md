@@ -5,7 +5,7 @@ A base class to weakly target any reference.
 Inspired by [this post](https://frontendmasters.com/blog/patterns-for-memory-efficient-dom-manipulation/) so that the example code would be instead:
 
 ```js
-import WeakTarget from '../src/index.js';
+import WeakTarget from 'weak-target';
 
 class Counter extends WeakTarget {
   constructor(target) {
