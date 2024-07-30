@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="importmap">{"imports":{"gc-hook":"https://cdn.jsdelivr.net/npm/gc-hook/es.js"}}</script>
+  <script type="module">
+    import WeakTarget from '../src/index.js';
+
+    class Counter extends WeakTarget {
+      constructor(target) {
+        super(target);
+        this.timer = 0;
+        this.count = 0;
+        this.start();
+      }
+      destructor() {
+        console.log("Garabage Collector ran and element is GONE – clean up interval");
+        this.stop();
+      }
+      start() {
+        if (this.timer) return;
+
+        this.count = 0;
+
+        const tick = () => {
+          const { target } = this;
+          if (target) {
+            console.log("Element is still in memory, updating count.")
+            target.textContent = `Counter: ${++this.count}`;
+          }
+        };
+
+        tick();
+        this.timer = setInterval(tick, 1000);
+      }
+      stop() {
+        if (this.timer) {
+          clearInterval(this.timer);
+          this.timer = 0;
+        }
+      }
+    }
+
+    const counter = new Counter(document.getElementById("counter-1"));
+
+    setTimeout(() => counter.target.remove(), 5000);
+
+    setTimeout(() => { new Counter(document.getElementById("counter-2")); }, 1500);
+  </script>
+</head>
+<body>
+  <div id="counter-1"></div>
+  <div id="counter-2"></div>
+</body>
+</html>

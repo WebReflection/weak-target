@@ -1,0 +1,17 @@
+{
+  "name": "weak-target",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "keywords": ["WeakRef", "destructor"],
+  "author": "Andrea Giammarchi",
+  "license": "MIT",
+  "description": "A base class to weakly target any reference",
+  "dependencies": {
+    "gc-hook": "^0.3.1"
+  }
+}
