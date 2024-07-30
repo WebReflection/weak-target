@@ -46,6 +46,10 @@ class Counter extends WeakTarget {
 }
 ```
 
+**[Live Demo](https://webreflection.github.io/weak-target/test/)**
+
+- - -
+
 That's it, the class orchestrate with ease the ability to retrieve a `target` reference that might has gone.
 
 If there is a `destructor` method attached, this will get invoked whenever that happens, either by accessing `target` explicitly, in case the FinalizationRegistry hasn't called the callback yet, or implicitly, when such callback gets executed.
