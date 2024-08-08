@@ -16,5 +16,13 @@
   "description": "A base class to weakly target any reference",
   "dependencies": {
     "gc-hook": "^0.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebReflection/weak-target.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WebReflection/weak-target/issues"
+  },
+  "homepage": "https://github.com/WebReflection/weak-target#readme"
 }
